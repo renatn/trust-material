@@ -1,0 +1,83 @@
+.login-error {
+  color: #DE3226;
+}
+
+.login-progress {
+    width: 50vw;
+    max-width: 260px;
+}
+
+.login-actions {
+  display: flex;
+  align-items: center;
+}
+
+.product-card {
+  margin-right: 15px;
+}
+
+.product-account > .mdl-card__title {
+    color: #FFF;
+    background-color: #46B6AC;
+    flex-wrap: wrap;
+}
+
+.product-card > .mdl-card__title {
+  color: #FFF;
+  background-color: #C2185B;
+  flex-wrap: wrap;
+}
+
+.product-card > .mdl-card__title > .mdl-card__title-text,
+.product-account > .mdl-card__title > .mdl-card__title-text {
+  display: flex;
+  align-self: flex-start;
+}
+
+.mdl-card__subtitle-text {
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.product__rest {
+  font-size: 18px;
+}
+
+.product-card > .mdl-card__menu,  .product-account > .mdl-card__menu {
+  color: #FFF;
+}
+
+.app-content {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.app-drawer-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 16px;
+}
+
+.app-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.app-avatar-dropdown {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  color: #FFF;
+}
+
+.mdl-layout__content {
+  display: flex;
+  flex-direction: column;
+}
+
+

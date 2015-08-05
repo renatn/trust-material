@@ -1,0 +1,31 @@
+{
+  "name": "trust-material",
+  "version": "1.0.0",
+  "description": "TRUST Online client in Material Design",
+  "keywords": [
+    "trust-online",
+    "internet-bank",
+    "mobile-bank",
+    "meterial-design"
+  ],
+  "author": "Renat Nasyrov",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^5.6.3",
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.4",
+    "grunt": "^0.4.5",
+    "grunt-browserify": "^3.8.0",
+    "grunt-connect-proxy": "^0.2.0",
+    "grunt-contrib-connect": "^0.10.1",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "load-grunt-configs": "^0.4.3",
+    "load-grunt-tasks": "^3.2.0"
+  },
+  "dependencies": {
+    "material-design-lite": "^1.0.0-3",
+    "react": "^0.13.3",
+    "superagent": "^1.2.0"
+  }
+}
