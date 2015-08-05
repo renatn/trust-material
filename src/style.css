@@ -1,3 +1,6 @@
+.login-heading {
+  color: #fff;
+}
 .login-error {
   color: #DE3226;
 }
@@ -11,6 +14,16 @@
   display: flex;
   align-items: center;
 }
+
+.login-input {
+  border-color: rgba(255, 255, 255, 0.82);
+  color: #FFF;
+}
+
+.login-label {
+  color: rgba(255, 255, 255, 0.56);
+}
+
 
 .product-card {
   margin-right: 15px;
@@ -34,6 +47,11 @@
   align-self: flex-start;
 }
 
+.mdl-layout__content {
+  display: flex;
+  flex-direction: column;
+}
+
 .mdl-card__subtitle-text {
   color: #ffffff;
   font-size: 16px;
@@ -45,6 +63,15 @@
 
 .product-card > .mdl-card__menu,  .product-account > .mdl-card__menu {
   color: #FFF;
+}
+
+.app-title {
+  padding-left: 1em;
+}
+
+.app-layout {
+  background: transparent url("back2.jpg") no-repeat scroll center center;
+
 }
 
 .app-content {
@@ -75,9 +102,16 @@
   color: #FFF;
 }
 
-.mdl-layout__content {
-  display: flex;
-  flex-direction: column;
+.app-button--sm {
+  min-width: 10em;
 }
 
+.app-navigation {
+  flex-grow: 1;
+}
+
+
+.mdl-layout__drawer > .app-navigation > .mdl-navigation__link {
+  color: #B0B0B0;
+}
 

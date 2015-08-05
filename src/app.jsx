@@ -62,30 +62,30 @@ class Login extends React.Component {
             <div className="mdl-grid">
 
               <div className="mdl-cell mdl-cell--12-col">
-                <h4>Вход в интернет-банк</h4>
+                <h4 className="login-heading">Вход в интернет-банк</h4>
               </div>
 
               {errorFrame}
 
               <div className="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input className="mdl-textfield__input"
+                <input className="mdl-textfield__input login-input"
                        type="text"
                        id="username1"
                        ref="username"/>
-                <label className="mdl-textfield__label" htmlFor="username1">Логин...</label>
+                <label className="mdl-textfield__label login-label" htmlFor="username1">Логин...</label>
               </div>
 
               <div className="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input className="mdl-textfield__input"
+                <input className="mdl-textfield__input login-input"
                        type="password"
                        id="password1"
                        ref="password"/>
-                <label className="mdl-textfield__label" htmlFor="password1">Пароль...</label>
+                <label className="mdl-textfield__label login-label" htmlFor="password1">Пароль...</label>
               </div>
 
               <div className="mdl-cell mdl-cell--12-col">
                 <div className="login-actions">
-                    <button className={this.state.executing ? 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent hidden' : 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'} onClick={this.handleSubmit.bind(this)}>Войти</button>
+                    <button className={this.state.executing ? 'hidden' : 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent app-button--sm'} onClick={this.handleSubmit.bind(this)}>Войти</button>
                     <div id="p2" className={this.state.executing? 'mdl-progress mdl-js-progress mdl-progress__indeterminate login-progress' : 'mdl-progress mdl-js-progress mdl-progress__indeterminate login-progress hidden'}></div>
                     <div className="mdl-layout-spacer"></div>
                     <a href="#">Забыли пароль?</a>
@@ -170,7 +170,7 @@ class Dashboard extends React.Component {
         return (
             <div className="mdl-grid">
                 <div className="mdl-cell mdl-cell--12-col">
-                    <h3>Мои финансы</h3>
+                    <h3 className="login-heading">Мои финансы</h3>
                 </div>
                 {cards}
                 {accounts}
