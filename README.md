@@ -1,2 +1,2 @@
 # trust-material
-TRUST Online client in Meterial Design
+TRUST Online client in Material Design
