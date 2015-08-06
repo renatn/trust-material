@@ -32,13 +32,13 @@
 .product-account > .mdl-card__title {
     color: #FFF;
     background-color: #46B6AC;
-    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .product-card > .mdl-card__title {
   color: #FFF;
   background-color: #C2185B;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .product-card > .mdl-card__title > .mdl-card__title-text,
@@ -55,6 +55,7 @@
 .mdl-card__subtitle-text {
   color: #ffffff;
   font-size: 16px;
+  align-self: flex-start;
 }
 
 .product__rest {
