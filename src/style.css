@@ -1,12 +1,22 @@
 .login-heading {
-  color: #fff;
+  color: #424242;
 }
+
+.app-subview-enter {
+  transform: translateX(100vw);
+  transition: transform 250ms ease-in;
+}
+
+.app-subview-enter.app-subview-enter-active {
+  transform: translateX(0);
+}
+
 .login-error {
   color: #DE3226;
 }
 
 .login-progress {
-    width: 50vw;
+    width: 100vw;
     max-width: 260px;
 }
 
@@ -16,12 +26,12 @@
 }
 
 .login-input {
-  border-color: rgba(255, 255, 255, 0.82);
-  color: #FFF;
+  /*border-color: rgba(255, 255, 255, 0.82);*/
+  /*color: #FFF;*/
 }
 
 .login-label {
-  color: rgba(255, 255, 255, 0.56);
+  /*color: rgba(255, 255, 255, 0.56);*/
 }
 
 
@@ -67,11 +77,12 @@
 }
 
 .app-title {
-  padding-left: 1em;
+  padding-left: 0.5em;
 }
 
 .app-layout {
-  background: transparent url("back2.jpg") no-repeat scroll center center;
+  /*background: linear-gradient(to bottom, #EEE, white);*/
+  /*background: transparent url("back.jpg") no-repeat scroll center center;*/
 
 }
 
@@ -103,8 +114,8 @@
   color: #FFF;
 }
 
-.app-button--sm {
-  min-width: 10em;
+.app-button--expand {
+  flex-grow: 1;
 }
 
 .app-navigation {

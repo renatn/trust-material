@@ -31,58 +31,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app-layout mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
-
-    <header class="mdl-layout__header mdl-color--primary">
-        <div class="mdl-layout__header-row">
-          <h3 class="app-title">TRUST Online</h3>
-        </div>
-    </header>
-
-    <div class="mdl-layout__drawer mdl-color--blue-grey-900">
-      <header class="app-drawer-header">
-          <img src="user.png" class="app-avatar">
-          <div class="app-avatar-dropdown">
-            <span>hello@example.com</span>
-            <div class="mdl-layout-spacer"></div>
-            <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-              <i class="material-icons" role="presentation">arrow_drop_down</i>
-              <span class="visuallyhidden">Accounts</span>
-            </button>
-            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-              <li class="mdl-menu__item">Выход...</li>
-            </ul>
-          </div>
-      </header>
-      <nav class="mdl-navigation mdl-color--blue-grey-800 app-navigation">
-        <a class="mdl-navigation__link" href="">
-          Рабочий стол
-        </a>
-        <a class="mdl-navigation__link" href="">Мои финансы</a>
-        <a class="mdl-navigation__link" href="">Платежи переводы</a>
-        <a class="mdl-navigation__link" href="">Предложения банка</a>
-        <div class="mdl-layout-spacer"></div>
-        <a class="mdl-navigation__link" href="">Выход</a>
-      </nav>
-    </div>
-
-    <main class="mdl-layout__content">
-      <div class="app-content">
-        <div id="app"></div>
-      </div>
-
-      <div class="mdl-layout-spacer"></div>
-      <footer class="mdl-mini-footer">
-        <div class="mdl-mini-footer--left-section">
-          <div class="mdl-logo">&copy; 2015</div>
-          <ul class="mdl-mini-footer--link-list">
-            <li><a href="#">Help</a></li>
-            <li><a href="#">Privacy & Terms</a></li>
-          </ul>
-        </div>
-      </footer>
-    </main>
-  </div>
+  <div id="app"></div>
 
   <script src="/node_modules/material-design-lite/material.min.js"></script>
   <script src="js/app.built.js"></script>

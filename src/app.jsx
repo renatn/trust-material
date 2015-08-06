@@ -1,6 +1,62 @@
 import React from 'react';
 import request from 'superagent';
 
+class AppHeader extends React.Component {
+    render() {
+        return (
+            <header className="mdl-layout__header mdl-color--primary">
+                <div className="mdl-layout__header-row">
+                  <h3 className="app-title">TRUST Online</h3>
+                </div>
+            </header>
+        );
+    }
+}
+
+class AppSidebar extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    handleLogout(e) {
+        e.preventDefault();
+        this.props.onLogout();
+    }
+
+    render() {
+
+        return (
+            <div className="mdl-layout__drawer mdl-color--blue-grey-900">
+              <header className="app-drawer-header">
+                  <img src="user.png" className="app-avatar"/>
+                  <div className="app-avatar-dropdown">
+                    <span>hello@example.com</span>
+                    <div className="mdl-layout-spacer"></div>
+                    <button id="accbtn" className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                      <i className="material-icons" role="presentation">arrow_drop_down</i>
+                      <span className="visuallyhidden">Accounts</span>
+                    </button>
+                    <ul className="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" htmlFor="accbtn">
+                      <li className="mdl-menu__item">Выход...</li>
+                    </ul>
+                  </div>
+              </header>
+              <nav className="mdl-navigation mdl-color--blue-grey-800 app-navigation">
+                <a className="mdl-navigation__link" href="">
+                  Рабочий стол
+                </a>
+                <a className="mdl-navigation__link" href="">Мои финансы</a>
+                <a className="mdl-navigation__link" href="">Платежи переводы</a>
+                <a className="mdl-navigation__link" href="">Предложения банка</a>
+                <div className="mdl-layout-spacer"></div>
+                <a className="mdl-navigation__link" href="" onClick={this.handleLogout.bind(this)}>Выход</a>
+              </nav>
+            </div>
+        );
+    }
+}
+
 class Login extends React.Component {
 
     constructor(props) {
@@ -85,10 +141,8 @@ class Login extends React.Component {
 
               <div className="mdl-cell mdl-cell--12-col">
                 <div className="login-actions">
-                    <button className={this.state.executing ? 'hidden' : 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent app-button--sm'} onClick={this.handleSubmit.bind(this)}>Войти</button>
+                    <button className={this.state.executing ? 'hidden' : 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent app-button--expand'} onClick={this.handleSubmit.bind(this)}>Войти</button>
                     <div id="p2" className={this.state.executing? 'mdl-progress mdl-js-progress mdl-progress__indeterminate login-progress' : 'mdl-progress mdl-js-progress mdl-progress__indeterminate login-progress hidden'}></div>
-                    <div className="mdl-layout-spacer"></div>
-                    <a href="#">Забыли пароль?</a>
                 </div>
               </div>
             </div>
@@ -105,8 +159,15 @@ class Dashboard extends React.Component {
         let main = JSON.parse(sessionStorage.getItem('main'));
         this.state = {
             cards: main.cards,
-            accounts: main.accounts
+            accounts: main.accounts,
+            activate: false
         }
+    }
+
+    componentDidMount() {
+        setTimeout(function(){
+            React.findDOMNode(this.refs.appSubView).classList.add("app-subview-enter-active");
+        }.bind(this), 150);
     }
 
     render() {
@@ -129,9 +190,13 @@ class Dashboard extends React.Component {
                             <a hre="#">Перевести</a>
                         </div>
                         <div className="mdl-card__menu">
-                            <button className="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <button id={"card"+card.url} className="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
                                 <i className="material-icons">share</i>
                             </button>
+                            <ul className="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" htmlFor={"card"+card.url} >
+                              <li className="mdl-menu__item">Переименовать...</li>
+                              <li className="mdl-menu__item">Свернуть</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -158,9 +223,14 @@ class Dashboard extends React.Component {
                         </div>
 
                         <div className="mdl-card__menu">
-                            <button className="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <button id={"account"+account.url} className="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
                                 <i className="material-icons">share</i>
                             </button>
+                            <ul className="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" htmlFor={"account"+account.url} >
+                              <li className="mdl-menu__item">Переименовать...</li>
+                              <li className="mdl-menu__item">Свернуть</li>
+                            </ul>
+
                         </div>
                     </div>
                 </div>
@@ -168,7 +238,7 @@ class Dashboard extends React.Component {
         });
 
         return (
-            <div className="mdl-grid">
+            <div className="mdl-grid app-subview-enter" ref="appSubView">
                 <div className="mdl-cell mdl-cell--12-col">
                     <h3 className="login-heading">Мои финансы</h3>
                 </div>
@@ -215,16 +285,57 @@ class App extends React.Component {
             token: response.sessionKey,
             step: response.next
         });
+
+        window.location.reload();
+    }
+
+    handleLogout() {
+        sessionStorage.clear();
+        this.setState({step: 'LOGIN'});
+        window.location.reload();
     }
 
     render() {
+
+        let subView;
         if (this.state.step === 'LOGIN') {
-            return (<Login onSuccessLogin={this.handleSuccessLogin.bind(this)} />);
+            subView = <Login onSuccessLogin={this.handleSuccessLogin.bind(this)} />;
         } else if (this.state.step === 'MAIN') {
-            return (<Dashboard/>);
+            subView = <Dashboard/>;
         } else {
-            return (<h1>Fail</h1>);
+            subView = <h1>Fail</h1>;
         }
+
+        let sideBar = this.state.step === 'LOGIN' ? '' :  <AppSidebar onLogout={this.handleLogout.bind(this)}/>;
+        let classes = "app-layout mdl-layout mdl-js-layout mdl-layout--fixed-header";
+        if (this.state.step !== 'LOGIN') {
+            classes = classes + ' mdl-layout--fixed-drawer';
+        }
+
+        return (
+            <div className={classes}>
+                <AppHeader/>
+
+                {sideBar}
+
+                <main className="mdl-layout__content">
+                  <div className="app-content">
+                    {subView}
+                  </div>
+
+                  <div className="mdl-layout-spacer"></div>
+                  <footer className="mdl-mini-footer">
+                    <div className="mdl-mini-footer--left-section">
+                      <div className="mdl-logo">&copy; 2015</div>
+                      <ul className="mdl-mini-footer--link-list">
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Privacy & Terms</a></li>
+                      </ul>
+                    </div>
+                  </footer>
+                </main>
+            </div>
+        );
     }
 
 }
