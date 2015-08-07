@@ -33,7 +33,8 @@ module.exports = function(grunt) {
               host: 'online.trust.ru',
               port: 443,
               https: true,
-              changeOrigin: false
+              protocol: 'https:',
+              changeOrigin: true
             }
           ]
         }
