@@ -36,7 +36,8 @@
 
 
 .product-card {
-  margin-right: 15px;
+  min-width: 200px;
+  min-height: 100px;
 }
 
 .product-account > .mdl-card__title {
