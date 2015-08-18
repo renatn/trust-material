@@ -17,4 +17,4 @@ Add line: 	changeOrigin: proxyOption.changeOrigin,
 
 ## Screenshots
 
-![](trust-material-login.png)
+![](trust-material-login.png) ![](trust-material-dashboard.png)
