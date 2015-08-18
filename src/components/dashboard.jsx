@@ -83,13 +83,13 @@ export default class Dashboard extends React.Component {
             );
         });
 
-        let transactions = this.state.transactions.slice(0, 5).map(function(transaction) {
+        let transactions = this.state.transactions.slice(0, 10).map(function(transaction) {
             return (
                 <div className="mdl-cell mdl-cell--12-col app-transaction">
-                    <div className="">{transaction.image}</div>
+                    <div className="app-transaction-avatar"><img src={'images/merchant/'+transaction.image}/></div>
                     <div className="">{transaction.transDateTime}</div>
                     <div className="">
-                        <div>{transaction.title}</div>
+                        <h5>{transaction.title}</h5>
                         <div>{transaction.details}</div>
                     </div>
                     <div className="">{transaction.transAmount}</div>
@@ -104,10 +104,16 @@ export default class Dashboard extends React.Component {
                 </div>
                 {cards}
                 {accounts}
-                <div className="mdl-cell mdl-cell--12-col">
-                    <h3 className="login-heading">Последние операции</h3>
+
+                <div className="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+                    <div className="mdl-card__supporting-text">
+                        <h4 className="login-heading">Последние операции</h4>
+                        {transactions}
+                        <button className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                            <i className="material-icons">more_vert</i>
+                        </button>
+                    </div>
                 </div>
-                {transactions}
             </div>
         );
     }

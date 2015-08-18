@@ -70,7 +70,7 @@ class App extends React.Component {
         let sideBar = this.state.step === 'LOGIN' ||  this.state.step === 'AUTH_SMS' ? '' :  <AppSidebar onLogout={this.handleLogout.bind(this)}/>;
 
         return (
-            <div className="app-layout mdl-layout  mdl-js-layout mdl-layout--fixed-header">
+            <div className="app-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
                 <AppHeader/>
 
                 {sideBar}
