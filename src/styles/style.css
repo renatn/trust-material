@@ -128,3 +128,7 @@
   color: #B0B0B0;
 }
 
+.app-transaction {
+  display: flex;
+  border-bottom: 1px solid #CCC;
+}

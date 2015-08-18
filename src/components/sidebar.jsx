@@ -16,7 +16,7 @@ export default class AppSidebar extends React.Component {
         return (
             <div className="mdl-layout__drawer mdl-color--blue-grey-900">
               <header className="app-drawer-header">
-                  <img src="user.png" className="app-avatar"/>
+                  <img src="images/user.png" className="app-avatar"/>
                   <div className="app-avatar-dropdown">
                     <span>hello@example.com</span>
                     <div className="mdl-layout-spacer"></div>

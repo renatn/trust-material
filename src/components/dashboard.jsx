@@ -9,6 +9,7 @@ export default class Dashboard extends React.Component {
         this.state = {
             cards: main.cards,
             accounts: main.accounts,
+            transactions: main.pfm.transactions,
             activate: false
         }
     }
@@ -82,6 +83,20 @@ export default class Dashboard extends React.Component {
             );
         });
 
+        let transactions = this.state.transactions.slice(0, 5).map(function(transaction) {
+            return (
+                <div className="mdl-cell mdl-cell--12-col app-transaction">
+                    <div className="">{transaction.image}</div>
+                    <div className="">{transaction.transDateTime}</div>
+                    <div className="">
+                        <div>{transaction.title}</div>
+                        <div>{transaction.details}</div>
+                    </div>
+                    <div className="">{transaction.transAmount}</div>
+                </div>
+            );
+        });
+
         return (
             <div className="mdl-grid app-subview-enter" ref="appSubView">
                 <div className="mdl-cell mdl-cell--12-col">
@@ -89,6 +104,10 @@ export default class Dashboard extends React.Component {
                 </div>
                 {cards}
                 {accounts}
+                <div className="mdl-cell mdl-cell--12-col">
+                    <h3 className="login-heading">Последние операции</h3>
+                </div>
+                {transactions}
             </div>
         );
     }
