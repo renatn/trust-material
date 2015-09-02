@@ -70,27 +70,29 @@ class App extends React.Component {
         let sideBar = this.state.step === 'LOGIN' ||  this.state.step === 'AUTH_SMS' ? '' :  <AppSidebar onLogout={this.handleLogout.bind(this)}/>;
 
         return (
-            <div className="app-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
-                <AppHeader/>
+            <div>
+                <div className="app-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
+                    <AppHeader/>
 
-                {sideBar}
+                    {sideBar}
 
-                <main className="mdl-layout__content">
-                  <div className="app-content">
-                    {subView}
-                  </div>
+                    <main className="mdl-layout__content">
+                      <div className="app-content">
+                        {subView}
+                      </div>
 
-                  <div className="mdl-layout-spacer"></div>
-                  <footer className="mdl-mini-footer">
-                    <div className="mdl-mini-footer--left-section">
-                      <div className="mdl-logo">&copy; 2015</div>
-                      <ul className="mdl-mini-footer--link-list">
-                        <li><a href="#">Помощь</a></li>
-                        <li><a href="#">Правила использования</a></li>
-                      </ul>
-                    </div>
-                  </footer>
-                </main>
+                      <div className="mdl-layout-spacer"></div>
+                      <footer className="mdl-mini-footer">
+                        <div className="mdl-mini-footer--left-section">
+                          <div className="mdl-logo">&copy; 2015</div>
+                          <ul className="mdl-mini-footer--link-list">
+                            <li><a href="#">Помощь</a></li>
+                            <li><a href="#">Правила использования</a></li>
+                          </ul>
+                        </div>
+                      </footer>
+                    </main>
+                </div>
             </div>
         );
     }

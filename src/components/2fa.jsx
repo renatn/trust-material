@@ -1,7 +1,7 @@
 import React from 'react';
 import request from 'superagent';
 
-class SecondFactor extends React.Component {
+export default class SecondFactor extends React.Component {
 
     constructor(props) {
         super(props);
