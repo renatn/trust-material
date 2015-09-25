@@ -138,3 +138,9 @@
   height: 64px;
   border-radius: 50%;
 }
+
+.mdl-card > button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}

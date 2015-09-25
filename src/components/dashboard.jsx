@@ -77,7 +77,6 @@ export default class Dashboard extends React.Component {
                           <li className="mdl-menu__item">Переименовать...</li>
                           <li className="mdl-menu__item">Свернуть</li>
                         </ul>
-
                     </div>
                 </div>
             );
@@ -109,10 +108,18 @@ export default class Dashboard extends React.Component {
                     <div className="mdl-card__supporting-text">
                         <h4 className="login-heading">Последние операции</h4>
                         {transactions}
-                        <button className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                            <i className="material-icons">more_vert</i>
-                        </button>
                     </div>
+
+                    <button id="transactions-list-menu" className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                        <i className="material-icons">more_vert</i>
+                    </button>
+                    <ul className="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                        htmlFor="transactions-list-menu">
+                      <li className="mdl-menu__item">Some Action</li>
+                      <li className="mdl-menu__item">Another Action</li>
+                      <li disabled className="mdl-menu__item">Disabled Action</li>
+                      <li className="mdl-menu__item">Yet Another Action</li>
+                    </ul>
                 </div>
             </div>
         );
