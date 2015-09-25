@@ -1,9 +1,8 @@
 import React from 'react';
-import AppSidebar from './components/sidebar.jsx';
 import Dashboard from './components/dashboard.jsx';
 import Login from './components/login.jsx';
-import AppHeader from './components/header.jsx';
 import SecondFactor from './components/2fa.jsx';
+import AppSidebar from './components/sidebar.jsx';
 
 class App extends React.Component {
 
@@ -22,10 +21,6 @@ class App extends React.Component {
             step: step,
             token: token
         };
-    }
-
-    componentDidUpdate() {
-        componentHandler.upgradeDom();
     }
 
     handleSuccessLogin(response) {
@@ -67,14 +62,19 @@ class App extends React.Component {
             subView = <h1>Fail</h1>;
         }
 
-        let sideBar = this.state.step === 'LOGIN' ||  this.state.step === 'AUTH_SMS' ? '' :  <AppSidebar onLogout={this.handleLogout.bind(this)}/>;
+        let isAuthenticated = this.state.step !== 'LOGIN' && this.state.step !== 'AUTH_SMS';
 
         return (
-            <div>
+            <div className={isAuthenticated ? 'is-authenticated' : 'is-not-authenticated'}>
                 <div className="app-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
-                    <AppHeader/>
 
-                    {sideBar}
+                    <header className="mdl-layout__header mdl-color--primary">
+                        <div className="mdl-layout__header-row">
+                          <h3 className="app-title">TRUST Material</h3>
+                        </div>
+                    </header>
+
+                    <AppSidebar onLogout={this.handleLogout.bind(this)} visible={isAuthenticated}/>
 
                     <main className="mdl-layout__content">
                       <div className="app-content">

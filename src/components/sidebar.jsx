@@ -14,7 +14,7 @@ export default class AppSidebar extends React.Component {
     render() {
 
         return (
-            <div className="mdl-layout__drawer mdl-color--blue-grey-900">
+            <div className={this.props.visible ? "mdl-layout__drawer mdl-color--blue-grey-900" : "mdl-layout__drawer mdl-color--blue-grey-900 hidden"}>
               <header className="app-drawer-header">
                   <img src="images/user.png" className="app-avatar"/>
                   <div className="app-avatar-dropdown">
