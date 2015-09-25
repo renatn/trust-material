@@ -42,7 +42,7 @@
 
 .product-account > .mdl-card__title {
     color: #FFF;
-    background-color: #46B6AC;
+    background-color: #03A9F4;
     flex-direction: column;
 }
 
@@ -70,7 +70,7 @@
 }
 
 .product__rest {
-  font-size: 18px;
+  font-size: 24px;
 }
 
 .product-card > .mdl-card__menu,  .product-account > .mdl-card__menu {
@@ -128,15 +128,38 @@
   color: #B0B0B0;
 }
 
+.app-transactions > .mdl-card__title > h4 {
+  margin: 0;
+}
+
 .app-transaction {
   display: flex;
   border-bottom: 1px solid #CCC;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.app-transaction > div {
+  margin-right: 8px;
 }
 
 .app-transaction-avatar > img {
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
+}
+
+.app-transaction-amount {
+  color: #F44336;
+  font-size: 2em;
+}
+
+.app-transaction-title {
+  flex-grow: 1;
+}
+
+.app-transaction-title > h5 {
+  margin: 0 0 8px 0;
 }
 
 .mdl-card > button {
@@ -147,4 +170,8 @@
 
 .mdl-layout__drawer {
   border-right: none;
+}
+
+.is-not-authenticated .mdl-layout__drawer-button {
+  display: none;
 }

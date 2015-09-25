@@ -87,11 +87,11 @@ export default class Dashboard extends React.Component {
                 <div className="mdl-cell mdl-cell--12-col app-transaction">
                     <div className="app-transaction-avatar"><img src={'images/merchant/'+transaction.image}/></div>
                     <div className="">{transaction.transDateTime}</div>
-                    <div className="">
+                    <div className="app-transaction-title">
                         <h5>{transaction.title}</h5>
                         <div>{transaction.details}</div>
                     </div>
-                    <div className="">{transaction.transAmount}</div>
+                    <div className="app-transaction-amount">{transaction.transAmount}</div>
                 </div>
             );
         });
@@ -104,9 +104,12 @@ export default class Dashboard extends React.Component {
                 {cards}
                 {accounts}
 
-                <div className="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
-                    <div className="mdl-card__supporting-text">
+                <div className="app-transactions mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+                    <div className="mdl-card__title">
                         <h4 className="login-heading">Последние операции</h4>
+                    </div>
+
+                    <div className="mdl-card__supporting-text">
                         {transactions}
                     </div>
 
