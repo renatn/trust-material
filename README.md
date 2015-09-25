@@ -3,17 +3,11 @@ TRUST Online client in Material Design
 
 ## How to build
 
+- npm install gulp -g
 - npm install
-- grunt build
-- grunt server
+- gulp
 
-Open in browser http://localhost:9001
-
-## Fix grunt-connect-proxy task
-
-Edit file node_modules/grunt-connect-proxy/tasks/connect_proxy.js
-
-Add line: 	changeOrigin: proxyOption.changeOrigin,
+Open in browser http://localhost:3000
 
 ## Screenshots
 
