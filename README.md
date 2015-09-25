@@ -11,4 +11,4 @@ Open in browser http://localhost:3000
 
 ## Screenshots
 
-![](trust-material-login.png) ![](trust-material-dashboard.png)
+![](doc/trust-material-login.png) ![](doc/trust-material-dashboard.png)
