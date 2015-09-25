@@ -144,3 +144,7 @@
   top: 8px;
   right: 8px;
 }
+
+.mdl-layout__drawer {
+  border-right: none;
+}
