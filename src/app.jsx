@@ -23,6 +23,10 @@ class App extends React.Component {
         };
     }
 
+    componentDidUpdate() {
+        componentHandler.upgradeDom();
+    }
+
     handleSuccessLogin(response) {
 
         sessionStorage.setItem('next', response.next);

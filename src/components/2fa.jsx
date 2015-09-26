@@ -16,19 +16,18 @@ export default class SecondFactor extends React.Component {
         setTimeout(function() {
             React.findDOMNode(this.refs.appSubView).classList.add("app-subview-enter-active");
         }.bind(this), 150);
+
     }
-
-
+   
     handleSubmit(e) {
         e.preventDefault();
-
-        let confirmCodeInput = React.findDOMNode(this.refs.confirmCode);
 
         this.setState({
             submitted: true,
             errorMessage: ''
         });
 
+        let confirmCodeInput = React.findDOMNode(this.refs.confirmCode);
         if (!confirmCodeInput.value) {
             return;
         }
@@ -39,6 +38,9 @@ export default class SecondFactor extends React.Component {
             .send('smsKey='+confirmCodeInput.value)
             .set('Authorization', this.props.token)
             .end(function (err, res) {
+                if (err) 
+                console.log(err);
+                console.log(res);
                 if (res.ok) {
                     if (res.body.error) {
                         this.setState({errorMessage: res.body.error});
