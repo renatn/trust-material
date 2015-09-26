@@ -25,6 +25,6 @@
   "dependencies": {
     "material-design-lite": "^1.0.4-2",
     "react": "^0.13.3",
-    "superagent": "^1.2.0"
+    "superagent": "^1.4.0"
   }
 }
