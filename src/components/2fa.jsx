@@ -36,9 +36,9 @@ export default class SecondFactor extends React.Component {
         request
             .post('/api/v1/auth2')
             .send('smsKey='+confirmCodeInput.value)
+            .set('Accept', 'application/json')
             .set('Authorization', this.props.token)
             .end(function (err, res) {
-                if (err) 
                 console.log(err);
                 console.log(res);
                 if (res.ok) {

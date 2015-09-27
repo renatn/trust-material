@@ -32,6 +32,7 @@ export default class Login extends React.Component {
             .post('/api/v1/sessions')
             .send('username='+usernameInput.value)
             .send('password='+passwordInput.value)
+            .set('Accept', 'application/json')
             .end(function (err, res) {
                 if (res.ok) {
                     if (res.body.error) {
