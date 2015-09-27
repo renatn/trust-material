@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="NB TRUST client">
@@ -23,17 +22,22 @@
     <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
     <meta name="msapplication-TileColor" content="#3372DF">
 
-    <!-- Material Design Resources -->
-    <link rel="stylesheet" href="/material-design-lite/material.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
+    <!--build:css styles/styles.min.css -->
+    <link rel="stylesheet" href="../node_modules/material-design-lite/material.css">
     <link rel="stylesheet" href="styles/style.css">
+    <!--endbuild-->
+
 </head>
 <body class="mdl-color--grey-100">
   <div id="app"></div>
 
-  <script src="/material-design-lite/material.min.js"></script>
+  <!--build:js js/vendor.min.js -->
+  <script src="../node_modules/material-design-lite/material.js"></script>
+  <!--endbuild-->
+
   <script src="js/app.built.js"></script>
 </body>
 </html>
