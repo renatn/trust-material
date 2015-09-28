@@ -3,7 +3,7 @@
 	[
 		{
             "follow_symlinks": true,
-             "folder_exclude_patterns": [".tmp", "node_modules", "tmp"],
+             "folder_exclude_patterns": [".tmp", "node_modules", "tmp", "dist"],
             "path": "."
 		}
 	]

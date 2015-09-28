@@ -41,11 +41,11 @@ function bundle(watch) {
     return rebundle();
 }
 
-gulp.task('build:watch', function() {    
+gulp.task('build:watch', function() {
     return bundle(true);
 });
 
-gulp.task('build:dist', function() {    
+gulp.task('build:dist', function() {
     return bundle(false);
 });
 
@@ -80,10 +80,13 @@ gulp.task('clean', function() {
   del('dist');
 })
 
-gulp.task('dist', ['build:dist', 'useref'], function() {
+gulp.task('images', function() {
     return gulp.src('./src/images/**/*.*')
         .pipe(gulp.dest('dist/images'))
-});
+})
 
+gulp.task('dist', function(cb) {
+    runSequence('clean',  'build:dist', ['useref', 'images'], cb)
+});
 
 gulp.task('default', ['dist']);
