@@ -49,9 +49,8 @@ gulp.task('build:dist', function() {
     return bundle(false);
 });
 
-gulp.task('useref', function(){
+gulp.task('useref', function() {
   var assets = useref.assets();
-
   return gulp.src('./src/index.html')
     .pipe(assets)
     .pipe(gulpIf('*.js', uglify()))
@@ -73,7 +72,8 @@ gulp.task('browserSync', function() {
 })
 
 gulp.task('server', ['build:watch', 'browserSync'], function () {
-    gulp.watch('./src/index.html', browserSync.reload);
+    gulp.watch('./src/index.html', ['useref']);
+    gulp.watch('./src/styles/style.css', ['useref']);
 });
 
 gulp.task('clean', function() {
