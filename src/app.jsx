@@ -70,7 +70,7 @@ class App extends React.Component {
 
         return (
             <div className={isAuthenticated ? 'is-authenticated' : 'is-not-authenticated'}>
-                <div className="app-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
+                <div className={isAuthenticated ? 'app-layout mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer' : 'app-layout mdl-layout mdl-js-layout mdl-layout--fixed-header'}>
 
                     <header className="mdl-layout__header mdl-color--primary">
                         <div className="mdl-layout__header-row">

@@ -31,13 +31,26 @@ export default class AppSidebar extends React.Component {
               </header>
               <nav className="mdl-navigation mdl-color--blue-grey-800 app-navigation">
                 <a className="mdl-navigation__link" href="">
+                  <i className="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>
                   Рабочий стол
                 </a>
-                <a className="mdl-navigation__link" href="">Мои финансы</a>
-                <a className="mdl-navigation__link" href="">Платежи переводы</a>
-                <a className="mdl-navigation__link" href="">Предложения банка</a>
+                <a className="mdl-navigation__link" href="">
+                  <i className="mdl-color-text--blue-grey-400 material-icons" role="presentation">account_balance_wallet</i>
+                  Мои финансы
+                </a>
+                <a className="mdl-navigation__link" href="">
+                  <i className="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>
+                  Платежи переводы
+                </a>
+                <a className="mdl-navigation__link" href="">
+                  <i className="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>
+                  Предложения банка
+                </a>
                 <div className="mdl-layout-spacer"></div>
-                <a className="mdl-navigation__link" href="" onClick={this.handleLogout.bind(this)}>Выход</a>
+                <a className="mdl-navigation__link" href="" onClick={this.handleLogout.bind(this)}>
+                  <i className="mdl-color-text--blue-grey-400 material-icons" role="presentation">exit_to_app</i>
+                  Выход
+                </a>
               </nav>
             </div>
         );
