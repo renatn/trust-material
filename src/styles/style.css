@@ -34,26 +34,33 @@
   /*color: rgba(255, 255, 255, 0.56);*/
 }
 
-
-.product-card {
+.product {
   min-width: 200px;
   min-height: 100px;
 }
 
-.product-account > .mdl-card__title {
+.product > .mdl-card__menu {
+  color: #FFF;
+}
+
+.product > .mdl-card__title {
     color: #FFF;
-    background-color: #03A9F4;
     flex-direction: column;
 }
 
-.product-card > .mdl-card__title {
-  color: #FFF;
-  background-color: #C2185B;
-  flex-direction: column;
+.product-deposit > .mdl-card__title {
+    background-color: #4CAF50;
 }
 
-.product-card > .mdl-card__title > .mdl-card__title-text,
-.product-account > .mdl-card__title > .mdl-card__title-text {
+.product-account > .mdl-card__title {
+    background-color: #03A9F4;
+}
+
+.product-card > .mdl-card__title {
+  background-color: #C2185B;
+}
+
+.product > .mdl-card__title > .mdl-card__title-text {
   display: flex;
   align-self: flex-start;
 }
@@ -73,9 +80,6 @@
   font-size: 24px;
 }
 
-.product-card > .mdl-card__menu,  .product-account > .mdl-card__menu {
-  color: #FFF;
-}
 
 .app-title {
   padding-left: 0.5em;
@@ -131,7 +135,7 @@
 }
 
 .app-navigation > .mdl-navigation__link > i {
-  margin-right: 1em;
+  margin-right: 8px;
 }
 
 

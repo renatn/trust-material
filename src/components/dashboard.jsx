@@ -9,6 +9,7 @@ export default class Dashboard extends React.Component {
         this.state = {
             cards: main.cards,
             accounts: main.accounts,
+            deposits: main.deposits,
             transactions: main.pfm.transactions,
             activate: false
         }
@@ -23,7 +24,7 @@ export default class Dashboard extends React.Component {
     render() {
         let cards = this.state.cards.map(function(card) {
             return (
-                <div className="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp product-card" key={card.key}>
+                <div className="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp product product-card" key={card.key}>
                         <div className="mdl-card__title mdl-card--expand">
                             <h4 className="mdl-card__title-text">
                                 {card.alias}
@@ -53,7 +54,7 @@ export default class Dashboard extends React.Component {
 
         let accounts = this.state.accounts.map(function(account) {
             return (
-                <div className="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp product-account" key={account.key}>
+                <div className="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp product product-account" key={account.key}>
                     <div className="mdl-card__title mdl-card--expand">
                         <h4 className="mdl-card__title-text">
                             {account.alias}
@@ -74,6 +75,37 @@ export default class Dashboard extends React.Component {
                             <i className="material-icons">share</i>
                         </button>
                         <ul className="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" htmlFor={"account"+account.url} >
+                          <li className="mdl-menu__item">Переименовать...</li>
+                          <li className="mdl-menu__item">Свернуть</li>
+                        </ul>
+                    </div>
+                </div>
+            );
+        });
+
+        let deposits = this.state.deposits.map(function(deposit) {
+            return (
+                <div className="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp product product-deposit" key={deposit.key}>
+                    <div className="mdl-card__title mdl-card--expand">
+                        <h4 className="mdl-card__title-text">
+                            {deposit.alias}
+                        </h4>
+                        <h3 className="mdl-card__subtitle-text">
+                            {deposit.number}
+                        </h3>
+                    </div>
+                    <div className="mdl-card__supporting-text">
+                            <span className="product__rest">{deposit.rest} P</span>
+                    </div>
+                    <div className="mdl-card__actions mdl-card--border">
+                        <a hre="#">Перевести</a>
+                    </div>
+
+                    <div className="mdl-card__menu">
+                        <button id={"deposit"+deposit.url} className="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i className="material-icons">share</i>
+                        </button>
+                        <ul className="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" htmlFor={"deposit"+deposit.url} >
                           <li className="mdl-menu__item">Переименовать...</li>
                           <li className="mdl-menu__item">Свернуть</li>
                         </ul>
@@ -103,6 +135,7 @@ export default class Dashboard extends React.Component {
                 </div>
                 {cards}
                 {accounts}
+                {deposits}
 
                 <div className="app-transactions mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
                     <div className="mdl-card__title">
