@@ -1,20 +1,22 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
+var gulpIf = require('gulp-if');
+var useref = require('gulp-useref');
+var uglify = require('gulp-uglify');
+var sourcemaps = require("gulp-sourcemaps");
 var browserify = require('browserify');
 var babelify = require('babelify');
 var watchify = require('watchify');
 var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
 var browserSync = require('browser-sync');
 var url = require('url');
 var proxy = require('proxy-middleware');
 var del = require('del');
 var runSequence = require('run-sequence');
-var gulpIf = require('gulp-if');
-var useref = require('gulp-useref');
-var uglify = require('gulp-uglify');
 
-function bundle(watch) {
-    var bundler = browserify({entries: './src/app.jsx', extensions: ['.jsx'], debug: true});
+function bundle(watch, debug) {
+    var bundler = browserify({entries: './src/app.jsx', extensions: ['.jsx'], debug: debug});
 
     if (watch) {
         bundler = watchify(bundler);
@@ -34,6 +36,10 @@ function bundle(watch) {
                 this.emit("end");
             })
             .pipe(source('app.built.js'))
+            .pipe(buffer())
+            .pipe(gulpIf(debug, sourcemaps.init({loadMaps: true})))
+            .pipe(uglify())
+            .pipe(gulpIf(debug, sourcemaps.write()))
             .pipe(gulp.dest('./dist/js'))
             .pipe(gulpIf(watch, browserSync.stream({once: true})));
     }
@@ -42,11 +48,11 @@ function bundle(watch) {
 }
 
 gulp.task('build:watch', function() {
-    return bundle(true);
+    return bundle(true, true);
 });
 
 gulp.task('build:dist', function() {
-    return bundle(false);
+    return bundle(false, false);
 });
 
 gulp.task('useref', function() {
@@ -86,7 +92,7 @@ gulp.task('images', function() {
 })
 
 gulp.task('dist', function(cb) {
-    runSequence('clean',  'build:dist', ['useref', 'images'], cb)
+    runSequence('clean', 'build:dist', ['useref', 'images'], cb)
 });
 
 gulp.task('default', ['dist']);
