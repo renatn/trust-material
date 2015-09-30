@@ -1,15 +1,20 @@
 import React from 'react';
-import request from 'superagent';
+import Actions from '../actions/Actions.jsx';
+import LoginStore from '../store/LoginStore.jsx';
 
 export default class Login extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state =  {
-            submitted: false,
-            errorMessage: '',
-            executing: false
-        };
+        this.state = LoginStore.getState();
+    }
+
+    componentDidMount() {
+        LoginStore.addChangeListener(this._onChange.bind(this));
+    }
+
+    componentWillUnmount() {
+        LoginStore.removeChangeListener(this._onChange.bind(this));
     }
 
     handleSubmit(e) {
@@ -18,36 +23,15 @@ export default class Login extends React.Component {
         let usernameInput = React.findDOMNode(this.refs.username),
             passwordInput = React.findDOMNode(this.refs.password);
 
-        this.setState({
-            submitted: true,
-            errorMessage: ''
-        });
-
         if (!usernameInput.value || !passwordInput.value) {
+            this.setState({
+                submitted: true,
+                errorMessage: ''
+            });
             return;
         }
 
-        this.setState({executing: true});
-        request
-            .post('/api/v1/sessions')
-            .send('username='+usernameInput.value)
-            .send('password='+passwordInput.value)
-            .set('Accept', 'application/json')
-            .end(function (err, res) {
-                if (res.ok) {
-                    if (res.body.error) {
-                        this.setState({errorMessage: res.body.error});
-                    } else {
-                        this.props.onSuccessLogin(res.body);
-                        return;
-                    }
-                } else {
-                    this.setState({errorMessage: 'Интернет-банк временно не доступен. Скоро все будет ОК.'});
-                }
-                passwordInput.value = '';
-                usernameInput.value = '';
-                this.setState({executing: false});
-            }.bind(this));
+        Actions.login(usernameInput.value, passwordInput.value)
     }
 
     render() {
@@ -89,6 +73,10 @@ export default class Login extends React.Component {
             </div>
           </form>
         );
+    }
+
+    _onChange() {
+        this.setState(LoginStore.getState());
     }
 }
 
