@@ -16,7 +16,7 @@ export default class Dashboard extends React.Component {
     }
 
     componentDidMount() {
-        setTimeout(function(){
+        setTimeout(function() {
             React.findDOMNode(this.refs.appSubView).classList.add("app-subview-enter-active");
         }.bind(this), 150);
     }
@@ -37,7 +37,7 @@ export default class Dashboard extends React.Component {
                             <span className="product__rest">{card.rest} P</span>
                         </div>
                         <div className="mdl-card__actions mdl-card--border">
-                            <a hre="#">Перевести</a>
+                            <a href="#" className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">Перевести</a>
                         </div>
                         <div className="mdl-card__menu">
                             <button id={"card"+card.url} className="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
@@ -67,7 +67,7 @@ export default class Dashboard extends React.Component {
                             <span className="product__rest">{account.rest} P</span>
                     </div>
                     <div className="mdl-card__actions mdl-card--border">
-                        <a hre="#">Перевести</a>
+                        <a href="#" className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">Перевести</a>
                     </div>
 
                     <div className="mdl-card__menu">
@@ -98,7 +98,7 @@ export default class Dashboard extends React.Component {
                             <span className="product__rest">{deposit.rest} P</span>
                     </div>
                     <div className="mdl-card__actions mdl-card--border">
-                        <a hre="#">Перевести</a>
+                        <a href="#" className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">Пополнить</a>
                     </div>
 
                     <div className="mdl-card__menu">
@@ -117,16 +117,18 @@ export default class Dashboard extends React.Component {
         let transactions = this.state.transactions.slice(0, 10).map(function(transaction) {
             return (
                 <div className="mdl-cell mdl-cell--12-col app-transaction">
-                    <div className="app-transaction-avatar"><img src={'images/merchant/'+transaction.image}/></div>
-                    <div className="">{transaction.transDateTime}</div>
+                    <div className="app-transaction-avatar">
+                        <img src={'images/merchant/'+transaction.image}/>
+                        <span>{transaction.transDateTime}</span>
+                    </div>
                     <div className="app-transaction-title">
                         <h5>{transaction.title}</h5>
                         <div>{transaction.details}</div>
                     </div>
-                    <div className="app-transaction-amount">{transaction.transAmount}</div>
+                    <div className="app-transaction-amount"><nobr>{this._formatAmount(transaction.transAmount)} P</nobr></div>
                 </div>
             );
-        });
+        }.bind(this));
 
         return (
             <div className="mdl-grid app-subview-enter" ref="appSubView">
@@ -140,24 +142,52 @@ export default class Dashboard extends React.Component {
                 <div className="app-transactions mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
                     <div className="mdl-card__title">
                         <h4 className="login-heading">Последние операции</h4>
+                        <div className="mdl-layout-spacer"></div>
+
+                        <div className="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                            <label className="mdl-button mdl-js-button mdl-button--icon" htmlFor="sample6">
+                              <i className="material-icons">search</i>
+                            </label>
+                            <div className="mdl-textfield__expandable-holder">
+                              <input className="mdl-textfield__input" type="text" id="sample6" />
+                              <label className="mdl-textfield__label" htmlFor="sample-expandable">Expandable Input</label>
+                            </div>
+                         </div>
+
+                        <button id="transactions-list-menu" className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                            <i className="material-icons">more_vert</i>
+                        </button>
+                        <ul className="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                            htmlFor="transactions-list-menu">
+                          <li className="mdl-menu__item">Some Action</li>
+                          <li className="mdl-menu__item">Another Action</li>
+                          <li disabled className="mdl-menu__item">Disabled Action</li>
+                          <li className="mdl-menu__item">Yet Another Action</li>
+                        </ul>
                     </div>
 
                     <div className="mdl-card__supporting-text">
                         {transactions}
+                        <div className="mdl-typography--text-center">
+                            <a href="" className="mdl-button mdl-js-button mdl-js-ripple-effect">Показать ещё</a>
+                        </div>
                     </div>
 
-                    <button id="transactions-list-menu" className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                        <i className="material-icons">more_vert</i>
-                    </button>
-                    <ul className="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-                        htmlFor="transactions-list-menu">
-                      <li className="mdl-menu__item">Some Action</li>
-                      <li className="mdl-menu__item">Another Action</li>
-                      <li disabled className="mdl-menu__item">Disabled Action</li>
-                      <li className="mdl-menu__item">Yet Another Action</li>
-                    </ul>
                 </div>
             </div>
         );
+    }
+
+    _formatAmount(amount) {
+        if (!amount) {
+            return '';
+        }
+        let result = '' + amount;
+        let dotPos = result.indexOf('.');
+        if (dotPos + 2 === result.length) {
+            return result + '0';
+        } else {
+            return result;
+        }
     }
 }
