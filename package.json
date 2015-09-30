@@ -27,7 +27,9 @@
     "url": "^0.11.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.4.0"
+    "watchify": "^3.4.0",
+    "eslint": "^1.5.1",
+    "eslint-plugin-react": "^3.5.0"
   },
   "dependencies": {
     "material-design-lite": "^1.0.4-2",
