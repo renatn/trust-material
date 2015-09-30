@@ -12,7 +12,7 @@ class App extends React.Component {
         let step = 'LOGIN',
             token = null;
         let tokenExpire = parseInt(sessionStorage.getItem('token_expire'), 10);
-        if (!isNaN(tokenExpire) && tokenExpire > Date.now()) {
+        if (!isNaN(tokenExpire) /* && tokenExpire > Date.now() */) { // TODO: Temporary disable check token expiration
             token = sessionStorage.getItem('token');
             step = sessionStorage.getItem('next');
         }
@@ -33,8 +33,7 @@ class App extends React.Component {
         sessionStorage.setItem('token', response.sessionKey);
         sessionStorage.setItem('token_expire', (Date.now() + (8 * 60 * 1000)).toString());
 
-        if (response.next === 'AUTH_SMS') {
-        } else if (response.next === 'MAIN' || response.next === 'INSTR') {
+        if (response.next === 'MAIN' || response.next === 'INSTR') {
             sessionStorage.setItem('main', JSON.stringify(response));
         } else if (response.next === 'LICENCE') {
             sessionStorage.setItem('license', response.licence);
