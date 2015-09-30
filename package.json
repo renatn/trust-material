@@ -16,8 +16,12 @@
     "browser-sync": "^2.8.2",
     "browserify": "^10.2.4",
     "del": "^2.0.2",
+    "eslint": "^1.5.1",
+    "eslint-plugin-react": "^3.5.0",
     "gulp": "^3.9.0",
     "gulp-if": "^1.2.5",
+    "gulp-rev": "^6.0.1",
+    "gulp-rev-replace": "^0.4.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.4.1",
     "gulp-useref": "^1.3.0",
@@ -27,9 +31,7 @@
     "url": "^0.11.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.4.0",
-    "eslint": "^1.5.1",
-    "eslint-plugin-react": "^3.5.0"
+    "watchify": "^3.4.0"
   },
   "dependencies": {
     "material-design-lite": "^1.0.4-2",

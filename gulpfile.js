@@ -3,6 +3,8 @@ var gutil = require('gulp-util');
 var gulpIf = require('gulp-if');
 var useref = require('gulp-useref');
 var uglify = require('gulp-uglify');
+var rev = require('gulp-rev');
+var revReplace = require('gulp-rev-replace');
 var sourcemaps = require("gulp-sourcemaps");
 var browserify = require('browserify');
 var babelify = require('babelify');
@@ -14,6 +16,7 @@ var url = require('url');
 var proxy = require('proxy-middleware');
 var del = require('del');
 var runSequence = require('run-sequence');
+
 
 function bundle(watch, debug) {
     var bundler = browserify({entries: './src/app.jsx', extensions: ['.jsx'], debug: debug});
@@ -60,8 +63,10 @@ gulp.task('useref', function() {
   return gulp.src('./src/index.html')
     .pipe(assets)
     .pipe(gulpIf('*.js', uglify()))
+    .pipe(rev())
     .pipe(assets.restore())
     .pipe(useref())
+    .pipe(revReplace())
     .pipe(gulp.dest('dist'))
 });
 
