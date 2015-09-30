@@ -3,47 +3,21 @@ import Dashboard from './components/dashboard.jsx';
 import Login from './components/login.jsx';
 import SecondFactor from './components/2fa.jsx';
 import AppSidebar from './components/sidebar.jsx';
+import AppStore from './store/AppStore.jsx';
 
 class App extends React.Component {
 
     constructor(props) {
-        super(props);
+        super(props);        
+        this.state = AppStore.getState();
+    }
 
-        let step = 'LOGIN',
-            token = null;
-        let tokenExpire = parseInt(sessionStorage.getItem('token_expire'), 10);
-        if (!isNaN(tokenExpire) /* && tokenExpire > Date.now() */) { // TODO: Temporary disable check token expiration
-            token = sessionStorage.getItem('token');
-            step = sessionStorage.getItem('next');
-        }
-
-        this.state = {
-            step: step,
-            token: token
-        };
+    componentDidMount() {
+        AppStore.addChangeListener(this._onChange.bind(this));
     }
 
     componentDidUpdate() {
         componentHandler.upgradeDom();
-    }
-
-    handleSuccessLogin(response) {
-
-        sessionStorage.setItem('next', response.next);
-        sessionStorage.setItem('token', response.sessionKey);
-        sessionStorage.setItem('token_expire', (Date.now() + (8 * 60 * 1000)).toString());
-
-        if (response.next === 'MAIN' || response.next === 'INSTR') {
-            sessionStorage.setItem('main', JSON.stringify(response));
-        } else if (response.next === 'LICENCE') {
-            sessionStorage.setItem('license', response.licence);
-        }
-
-        this.setState({
-            token: response.sessionKey,
-            step: response.next
-        });
-
     }
 
     handleLogout() {
@@ -56,11 +30,11 @@ class App extends React.Component {
 
         let subView;
         if (this.state.step === 'LOGIN') {
-            subView = <Login onSuccessLogin={this.handleSuccessLogin.bind(this)} />;
+            subView = <Login/>;
         } else if (this.state.step === 'MAIN') {
             subView = <Dashboard/>;
         } else if (this.state.step === 'AUTH_SMS') {
-            subView = <SecondFactor onSuccessLogin={this.handleSuccessLogin.bind(this)} token={this.state.token}/>;
+            subView = <SecondFactor token={this.state.token}/>;
         } else {
             subView = <h1>Fail</h1>;
         }
@@ -98,6 +72,10 @@ class App extends React.Component {
                 </div>
             </div>
         );
+    }
+
+    _onChange() {
+        this.setState(AppStore.getState());
     }
 }
 

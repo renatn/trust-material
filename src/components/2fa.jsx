@@ -1,59 +1,39 @@
 import React from 'react';
 import request from 'superagent';
+import LoginStore from '../store/LoginStore.jsx';
+import Actions from '../actions/Actions.jsx';
 
 export default class SecondFactor extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            submitted: false,
-            errorMessage: '',
-            executing: false
-        };
+        this.state = LoginStore.getState();
     }
 
     componentDidMount() {
         setTimeout(function() {
             React.findDOMNode(this.refs.appSubView).classList.add("app-subview-enter-active");
         }.bind(this), 150);
+        LoginStore.addChangeListener(this._onChange.bind(this));
+    }
 
+    componentWillUnmount() {
+        LoginStore.removeChangeListener(this._onChange.bind(this));
     }
    
     handleSubmit(e) {
         e.preventDefault();
 
-        this.setState({
-            submitted: true,
-            errorMessage: ''
-        });
-
         let confirmCodeInput = React.findDOMNode(this.refs.confirmCode);
         if (!confirmCodeInput.value) {
+            this.setState({
+                submitted: true,
+                errorMessage: ''
+            });
             return;
         }
 
-        this.setState({executing: true});
-        request
-            .post('/api/v1/auth2')
-            .send('smsKey='+confirmCodeInput.value)
-            .set('Accept', 'application/json')
-            .set('Authorization', this.props.token)
-            .end(function (err, res) {
-                console.log(err);
-                console.log(res);
-                if (res.ok) {
-                    if (res.body.error) {
-                        this.setState({errorMessage: res.body.error});
-                    } else {
-                        this.props.onSuccessLogin(res.body);
-                        return;
-                    }
-                } else {
-                    this.setState({errorMessage: 'Интернет-банк временно не доступен. Скоро все будет ОК.'});
-                }
-                confirmCodeInput.value = '';
-                this.setState({executing: false});
-            }.bind(this));
+        Actions.confirmCode(confirmCodeInput.value);
     }
 
     render() {
@@ -87,4 +67,9 @@ export default class SecondFactor extends React.Component {
           </form>
         );
     }
+
+    _onChange() {
+        this.setState(LoginStore.getState());
+    }
+
 }
