@@ -35,7 +35,7 @@ _instance.dispatchToken = AppDispatcher.register(payload => {
 	let action = payload.action;
 
 	switch(action.type) {
-	    case 'LOGIN-SUCCESS':        
+	    case 'LOGIN-SUCCESS':
 	        _step = action.data.next;
 	        _token = action.data.sessionKey;
 
@@ -49,8 +49,10 @@ _instance.dispatchToken = AppDispatcher.register(payload => {
 	            sessionStorage.setItem('license', action.data.licence);
 	        }
 
+	        location.reload(); // TODO: ugly hack to display mdl gumburger menu
 	    	break;
-		default: 
+
+		default:
 			return;
 	}
 
