@@ -40,12 +40,14 @@ _instance.dispatchToken = AppDispatcher.register(payload => {
         .send('username='+action.username)
         .send('password='+action.password)
         .set('Accept', 'application/json')
-        .end(function (err, res) {Actions.handleLogin(res);});
+        .end(function (err, res) {
+          _executing = false;
+          Actions.handleLogin(res);
+        });
       break;
 
     case 'LOGIN-RESPONSE':
       _executing = false;
-
       if (action.response.ok) {
           if (action.response.body.error) {
               _errorMessage = action.response.body.error;
@@ -66,7 +68,10 @@ _instance.dispatchToken = AppDispatcher.register(payload => {
             .send('smsKey='+action.code)
             .set('Accept', 'application/json')
             .set('Authorization', AppStore.getToken())
-            .end(function (err, res) {Actions.handleLogin(res)});
+            .end(function (err, res) {
+              _executing = false;
+              Actions.handleLogin(res)
+            });
       break;
 
     case 'LOGIN-DEMO':
