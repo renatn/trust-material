@@ -30,7 +30,7 @@ _instance.dispatchToken = AppDispatcher.register(payload => {
   let action = payload.action;
 
   switch(action.type) {
-    
+
     case 'LOGIN':
       _executing = true;
       request
@@ -42,7 +42,7 @@ _instance.dispatchToken = AppDispatcher.register(payload => {
       break;
 
     case 'LOGIN-RESPONSE':
-      _executing = false; 
+      _executing = false;
 
       if (action.response.ok) {
           if (action.response.body.error) {
@@ -58,14 +58,14 @@ _instance.dispatchToken = AppDispatcher.register(payload => {
       break;
 
     case 'LOGIN-CONFIRM':
-      _executing = false; 
+      _executing = true;
       request
             .post('/api/v1/auth2')
             .send('smsKey='+action.code)
             .set('Accept', 'application/json')
             .set('Authorization', AppStore.getToken())
             .end(function (err, res) {Actions.handleLogin(res)});
-      break;      
+      break;
 
     default:
       return;
