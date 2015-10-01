@@ -34,6 +34,12 @@ export default class Login extends React.Component {
         Actions.login(usernameInput.value, passwordInput.value)
     }
 
+    handleDemo(e) {
+      e.preventDefault();
+
+      Actions.demoLogin();
+    }
+
     render() {
 
         let errorFrame = !!this.state.errorMessage ? <div className="mdl-cell mdl-cell--12-col login-error">{this.state.errorMessage}</div> : '';
@@ -66,7 +72,8 @@ export default class Login extends React.Component {
 
               <div className="mdl-cell mdl-cell--12-col">
                 <div className="login-actions">
-                    <button className={this.state.executing ? 'hidden' : 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent app-button--expand'} onClick={this.handleSubmit.bind(this)}>Войти</button>
+                    <button className={this.state.executing ? 'hidden' : 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary app-button--expand'} onClick={this.handleSubmit.bind(this)}>Войти</button>
+                    <button className={this.state.executing ? 'hidden' : 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'} onClick={this.handleDemo.bind(this)}>Демо-доступ</button>
                     <div id="p2" className={this.state.executing? 'mdl-progress mdl-js-progress mdl-progress__indeterminate login-progress' : 'mdl-progress mdl-js-progress mdl-progress__indeterminate login-progress hidden'}></div>
                 </div>
               </div>

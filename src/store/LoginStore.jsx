@@ -3,10 +3,12 @@ import Store from './Store.jsx';
 import AppStore from '../store/AppStore.jsx';
 import AppDispatcher from '../dispatcher/AppDispatcher.jsx';
 import Actions from '../actions/Actions.jsx';
+import DemoMainUtils from '../utils/DemoMainUtils.js';
 
 let _submitted = false,
     _errorMessage = '',
     _executing = false;
+
 
 class LoginStore extends Store {
 
@@ -65,6 +67,13 @@ _instance.dispatchToken = AppDispatcher.register(payload => {
             .set('Accept', 'application/json')
             .set('Authorization', AppStore.getToken())
             .end(function (err, res) {Actions.handleLogin(res)});
+      break;
+
+    case 'LOGIN-DEMO':
+      _executing = true;
+      setTimeout(function() {
+        Actions.successLogin(DemoMainUtils.getDemoMain());
+      }, 1000);
       break;
 
     default:

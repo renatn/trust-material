@@ -1,5 +1,5 @@
 import AppDispatcher from '../dispatcher/AppDispatcher.jsx'
- 
+
 export default class Actions {
     static login(username, password) {
         AppDispatcher.handleAction({
@@ -7,7 +7,7 @@ export default class Actions {
         	username: username,
         	password: password
         });
-    } 
+    }
 
     static handleLogin(response) {
         AppDispatcher.handleAction({
@@ -27,7 +27,13 @@ export default class Actions {
         AppDispatcher.handleAction({
         	type: 'LOGIN-CONFIRM',
         	code: code
-        });    	
+        });
+    }
+
+    static demoLogin() {
+        AppDispatcher.handleAction({
+            type: 'LOGIN-DEMO'
+        });
     }
 
 }
