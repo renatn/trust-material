@@ -82,7 +82,7 @@ gulp.task('browserSync', function() {
     })
 })
 
-gulp.task('server', ['build:watch', 'browserSync'], function () {
+gulp.task('server', ['build:watch', 'useref', 'browserSync'], function () {
     gulp.watch('./src/index.html', ['useref']);
     gulp.watch('./src/styles/style.css', ['useref']);
 });
@@ -96,8 +96,16 @@ gulp.task('images', function() {
         .pipe(gulp.dest('dist/images'))
 })
 
+gulp.task('fonts', function() {
+    return gulp.src([
+        './node_modules/material-design-icons/iconfont/*.*',
+        './node_modules/roboto-fontface/fonts/*.*',
+        ])
+        .pipe(gulp.dest('dist/fonts'))
+})
+
 gulp.task('dist', function(cb) {
-    runSequence('clean', 'build:dist', ['useref', 'images'], cb)
+    runSequence('clean', 'build:dist', ['useref', 'fonts', 'images'], cb)
 });
 
 gulp.task('default', ['dist']);
