@@ -8,7 +8,7 @@ import AppStore from './store/AppStore.jsx';
 class App extends React.Component {
 
     constructor(props) {
-        super(props);        
+        super(props);
         this.state = AppStore.getState();
     }
 
@@ -42,7 +42,7 @@ class App extends React.Component {
         let isAuthenticated = this.state.step !== 'LOGIN' && this.state.step !== 'AUTH_SMS';
 
         return (
-            <div className={isAuthenticated ? 'is-authenticated' : 'is-not-authenticated'}>
+            <div>
                 <div className={isAuthenticated ? 'app-layout mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer' : 'app-layout mdl-layout mdl-js-layout mdl-layout--fixed-header'}>
 
                     <header className="mdl-layout__header mdl-color--primary">
@@ -51,7 +51,7 @@ class App extends React.Component {
                         </div>
                     </header>
 
-                    <AppSidebar onLogout={this.handleLogout.bind(this)} visible={isAuthenticated}/>
+                    {isAuthenticated ? <AppSidebar onLogout={this.handleLogout.bind(this)}/> : ''}
 
                     <main className="mdl-layout__content">
                       <div className="app-content">
