@@ -82,14 +82,6 @@ gulp.task('browserSync', function() {
     })
 })
 
-gulp.task('server', ['build:watch', 'useref', 'browserSync'], function () {
-    gulp.watch('./src/index.html', ['useref']);
-    gulp.watch('./src/styles/style.css', ['useref']);
-});
-
-gulp.task('clean', function() {
-  del('dist');
-})
 
 gulp.task('images', function() {
     return gulp.src('./src/images/**/*.*')
@@ -104,8 +96,21 @@ gulp.task('fonts', function() {
         .pipe(gulp.dest('dist/fonts'))
 })
 
+gulp.task('assets', ['fonts', 'images', 'useref'], function() {
+        gutil.log('Finished assets...');
+});
+
+gulp.task('server', ['build:watch', 'assets', 'browserSync'], function () {
+    gulp.watch('./src/index.html', ['useref']);
+    gulp.watch('./src/styles/style.css', ['useref']);
+});
+
+gulp.task('clean', function() {
+  del('dist');
+})
+
 gulp.task('dist', function(cb) {
-    runSequence('clean', 'build:dist', ['useref', 'fonts', 'images'], cb)
+    runSequence('clean', 'build:dist', 'assets', cb)
 });
 
 gulp.task('default', ['dist']);
