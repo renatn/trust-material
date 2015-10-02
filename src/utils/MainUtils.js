@@ -4,9 +4,9 @@ export default class MainUtils {
             case 810:
                 return '\u20bd';
             case 840:
-                return '$';
+                return '\u0024';
             case 978:
-                return '&#x20AC;';
+                return '\u20AC';
             default:
                 return '?';
         }

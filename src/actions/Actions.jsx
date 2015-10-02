@@ -9,6 +9,12 @@ export default class Actions {
         });
     }
 
+    static logout() {
+        AppDispatcher.handleAction({
+            type: 'LOGOUT'
+        });
+    }
+
     static handleLogin(response) {
         AppDispatcher.handleAction({
         	type: 'LOGIN-RESPONSE',

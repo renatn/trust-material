@@ -52,6 +52,11 @@ _instance.dispatchToken = AppDispatcher.register(payload => {
 	        location.reload(); // TODO: ugly hack to display mdl gumburger menu
 	    	break;
 
+    	case 'LOGOUT':
+	        sessionStorage.clear();
+    	    window.location.reload();
+    		break;
+
 		default:
 			return;
 	}

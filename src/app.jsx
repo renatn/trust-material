@@ -4,6 +4,7 @@ import Login from './components/login.jsx';
 import SecondFactor from './components/2fa.jsx';
 import AppSidebar from './components/sidebar.jsx';
 import AppStore from './store/AppStore.jsx';
+import Actions from './actions/Actions.jsx';
 
 class App extends React.Component {
 
@@ -21,9 +22,7 @@ class App extends React.Component {
     }
 
     handleLogout() {
-        sessionStorage.clear();
-        this.setState({step: 'LOGIN'});
-        window.location.reload();
+        Actions.logout();
     }
 
     render() {

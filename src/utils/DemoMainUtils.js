@@ -30,7 +30,19 @@ let DemoMainUtils = {
                     "key": "tvc1dl9b6ehvq5brd51g04juf5"
                 }
             ],
-            "deposits": [],
+            "deposits": [
+                {
+                    "alias": "Всё включено + (в конце срока)",
+                    "rest": 2500.00,
+                    "currency": 978,
+                    "number": "42304810282011002415",
+                    "key": "emc314qjll1iev5pb3vffh4ph",
+                    "rate": "10 %",
+                    "term": 91,
+                    "opened": "26.09.2015",
+                    "closed": "25.12.2015"
+                }
+            ],
             "messages": [],
             "profile": {
             },
