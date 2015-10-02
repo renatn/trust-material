@@ -1,4 +1,5 @@
 import React from 'react';
+import MainUtils from '../utils/MainUtils.js';
 
 export default class Dashboard extends React.Component {
 
@@ -23,6 +24,8 @@ export default class Dashboard extends React.Component {
 
     render() {
         let cards = this.state.cards.map(function(card) {
+            let currencySymbol = MainUtils.currencySymbol(card.currency);
+
             return (
                 <div className="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp product product-card" key={card.key}>
                         <div className="mdl-card__title mdl-card--expand">
@@ -34,7 +37,7 @@ export default class Dashboard extends React.Component {
                             </h3>
                         </div>
                         <div className="mdl-card__supporting-text">
-                            <span className="product__rest">{card.rest} P</span>
+                            <span className="product__rest">{card.rest} {currencySymbol}</span>
                         </div>
                         <div className="mdl-card__actions mdl-card--border">
                             <a href="#" className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">Перевести</a>
@@ -50,9 +53,11 @@ export default class Dashboard extends React.Component {
                         </div>
                 </div>
             );
-        });
+        }.bind(this));
 
         let accounts = this.state.accounts.map(function(account) {
+            let currencySymbol = MainUtils.currencySymbol(account.currency);
+
             return (
                 <div className="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp product product-account" key={account.key}>
                     <div className="mdl-card__title mdl-card--expand">
@@ -64,7 +69,7 @@ export default class Dashboard extends React.Component {
                         </h3>
                     </div>
                     <div className="mdl-card__supporting-text">
-                            <span className="product__rest">{account.rest} P</span>
+                            <span className="product__rest">{account.rest} {currencySymbol}</span>
                     </div>
                     <div className="mdl-card__actions mdl-card--border">
                         <a href="#" className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">Перевести</a>
@@ -84,6 +89,8 @@ export default class Dashboard extends React.Component {
         });
 
         let deposits = this.state.deposits.map(function(deposit) {
+            let currencySymbol = MainUtils.currencySymbol(deposit.currency);
+
             return (
                 <div className="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp product product-deposit" key={deposit.key}>
                     <div className="mdl-card__title mdl-card--expand">
@@ -95,7 +102,7 @@ export default class Dashboard extends React.Component {
                         </h3>
                     </div>
                     <div className="mdl-card__supporting-text">
-                            <span className="product__rest">{deposit.rest} P</span>
+                            <span className="product__rest">{deposit.rest} {currencySymbol}</span>
                     </div>
                     <div className="mdl-card__actions mdl-card--border">
                         <a href="#" className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">Пополнить</a>
@@ -115,6 +122,7 @@ export default class Dashboard extends React.Component {
         });
 
         let transactions = this.state.transactions.slice(0, 10).map(function(transaction) {
+            let currencySymbol = MainUtils.currencySymbol(transaction.transCurr);
             return (
                 <div className="mdl-cell mdl-cell--12-col app-transaction">
                     <div className="app-transaction-avatar">
@@ -125,7 +133,7 @@ export default class Dashboard extends React.Component {
                         <h5>{transaction.title}</h5>
                         <div>{transaction.details}</div>
                     </div>
-                    <div className="app-transaction-amount"><nobr>{this._formatAmount(transaction.transAmount)} P</nobr></div>
+                    <div className="app-transaction-amount"><nobr>{this._formatAmount(transaction.transAmount)} {currencySymbol}</nobr></div>
                 </div>
             );
         }.bind(this));

@@ -1,6 +1,6 @@
 let DemoMainUtils = {
 
-    getDemoMain: function (){
+    getDemoMain: function () {
         return {
             "error": null,
             "next": "MAIN",
@@ -12,6 +12,13 @@ let DemoMainUtils = {
                     "currency": 810,
                     "number": "40817810782450099909",
                     "key": "lg3fsrggjgirfrd4h9552e301r"
+                },
+                {
+                    "alias": "Доллары",
+                    "rest": 100.21,
+                    "currency": 840,
+                    "number": "40817840782450077707",
+                    "key": "naebvlurnke14dc2c33sp2gim4"
                 }
             ],
             "cards": [
@@ -46,7 +53,17 @@ let DemoMainUtils = {
                         "transAmount": -308,
                         "image": "stolovaya_spartak.png",
                         "transCurr": 810
-                    }
+                    },
+                    {
+                        "category" : "Стройматериалы, мебель",
+                        "transDateTime" : "02.08.2015 17:49",
+                        "title" : "Покупка: HOFF HODYNKA",
+                        "details" : "Карта 4599 99** **** 9950. Город MOSKVA. Страна RUS.",
+                        "transAmount" : -542,
+                        "image" : "hoff.png",
+                        "transCurr" : 810
+                    },
+
                 ]
             }
         }
