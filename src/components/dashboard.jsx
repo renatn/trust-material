@@ -124,7 +124,7 @@ export default class Dashboard extends React.Component {
         let transactions = this.state.transactions.slice(0, 10).map(function(transaction) {
             let currencySymbol = MainUtils.currencySymbol(transaction.transCurr);
             return (
-                <div className="mdl-cell mdl-cell--12-col app-transaction">
+                <div className="mdl-cell mdl-cell--12-col app-transaction" key={transaction.transDateTime}>
                     <div className="app-transaction-avatar">
                         <img src={'images/merchant/'+transaction.image}/>
                         <span>{transaction.transDateTime}</span>
