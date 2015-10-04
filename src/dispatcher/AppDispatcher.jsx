@@ -9,13 +9,7 @@ AppDispatcher.handleAction = function(action) {
 		action: action
 	}
 
-	if (this.isDispatching()) {
-		setTimeout(() => {
-			this.dispatch(payload);
-		}, 0);
-	} else {
-		this.dispatch(payload);		
-	}
+	this.dispatch(payload);
 }
 
 export default AppDispatcher;

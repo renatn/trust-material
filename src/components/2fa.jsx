@@ -1,7 +1,8 @@
 import React from 'react';
-import request from 'superagent';
-import LoginStore from '../store/LoginStore.jsx';
 import Actions from '../actions/Actions.jsx';
+import LoginStore from '../store/LoginStore.jsx';
+import AppStore from '../store/AppStore.jsx';
+
 
 export default class SecondFactor extends React.Component {
 
@@ -33,7 +34,7 @@ export default class SecondFactor extends React.Component {
             return;
         }
 
-        Actions.confirmCode(confirmCodeInput.value);
+        Actions.confirmCode(confirmCodeInput.value, AppStore.getToken());
     }
 
     render() {

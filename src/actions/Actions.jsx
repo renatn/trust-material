@@ -1,12 +1,13 @@
-import AppDispatcher from '../dispatcher/AppDispatcher.jsx'
+import AppDispatcher from '../dispatcher/AppDispatcher.jsx';
+import API from '../utils/API.js';
 
 export default class Actions {
+  
     static login(username, password) {
         AppDispatcher.handleAction({
-        	type: 'LOGIN',
-        	username: username,
-        	password: password
+        	type: 'LOGIN'
         });
+        API.authenticate(username, password);
     }
 
     static logout() {
@@ -15,10 +16,10 @@ export default class Actions {
         });
     }
 
-    static handleLogin(response) {
+    static loginError(message) {
         AppDispatcher.handleAction({
-        	type: 'LOGIN-RESPONSE',
-        	response: response
+        	type: 'LOGIN-ERROR',
+        	message: message
         });
     }
 
@@ -29,11 +30,11 @@ export default class Actions {
         });
     }
 
-    static confirmCode(code) {
+    static confirmCode(code, token) {
         AppDispatcher.handleAction({
-        	type: 'LOGIN-CONFIRM',
-        	code: code
+        	type: 'LOGIN-CONFIRM'
         });
+        API.secondFactor(code, token);
     }
 
     static demoLogin() {

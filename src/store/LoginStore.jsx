@@ -1,6 +1,4 @@
-import request from 'superagent';
 import Store from './Store.jsx';
-import AppStore from '../store/AppStore.jsx';
 import AppDispatcher from '../dispatcher/AppDispatcher.jsx';
 import Actions from '../actions/Actions.jsx';
 import DemoMainUtils from '../utils/DemoMainUtils.js';
@@ -35,45 +33,17 @@ _instance.dispatchToken = AppDispatcher.register(payload => {
 
     case 'LOGIN':
       _executing = true;
-      request
-        .post('/api/v1/sessions')
-        .send('username='+action.username)
-        .send('password='+action.password)
-        .set('Accept', 'application/json')
-        .end(function (err, res) {
-          _executing = false;
-          Actions.handleLogin(res);
-        });
-      break;
-
-    case 'LOGIN-RESPONSE':
-      _executing = false;
-      if (action.response.ok) {
-          if (action.response.body.error) {
-              _errorMessage = action.response.body.error;
-          } else {
-              Actions.successLogin(action.response.body)
-          }
-      } else if (res.statusCode === 422)  {
-          _errorMessage = res.body.error;
-      } else {
-          _errorMessage = 'Интернет-банк временно не доступен. Скоро все будет ОК.';
-      }
       break;
 
     case 'LOGIN-CONFIRM':
       _executing = true;
-      request
-            .post('/api/v1/auth2')
-            .send('smsKey='+action.code)
-            .set('Accept', 'application/json')
-            .set('Authorization', AppStore.getToken())
-            .end(function (err, res) {
-              _executing = false;
-              Actions.handleLogin(res)
-            });
       break;
 
+    case 'LOGIN-ERROR':
+      _executing = false;
+      _errorMessage = action.message;
+      break;
+      
     case 'LOGIN-DEMO':
       _executing = true;
       setTimeout(function() {
