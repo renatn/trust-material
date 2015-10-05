@@ -37,7 +37,7 @@
     "events": "^1.1.0",
     "flux": "^2.1.1",
     "material-design-icons": "^2.0.0",
-    "material-design-lite": "^1.0.4-2",
+    "material-design-lite": "^1.0.5",
     "react": "^0.13.3",
     "roboto-fontface": "^0.4.2",
     "superagent": "^1.4.0"
