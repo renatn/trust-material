@@ -1,3 +1,48 @@
+/** MDL customize ------------------------------------------------------------ */
+
+.mdl-layout__content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.mdl-card__subtitle-text {
+  color: #ffffff;
+  font-size: 16px;
+  align-self: flex-start;
+}
+
+.mdl-layout__drawer {
+  border-right: none;
+}
+
+.mdl-card__title > .mdl-textfield {
+  padding: 0;
+}
+
+.mdl-card__title > .mdl-textfield > .mdl-button {
+  bottom: 0;
+}
+
+
+/** APP layot ------------------------------------------------------------ */
+
+.app-layout {
+  /*background: linear-gradient(to bottom, #EEE, white);*/
+  /*background: transparent url("back.jpg") no-repeat scroll center center;*/
+}
+
+.app-content {
+  max-width: 1080px;
+  margin: 0 auto;
+
+  z-index: 20;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  box-sizing: border-box;
+}
+
+
 .login-heading {
   color: #424242;
 }
@@ -65,17 +110,6 @@
   align-self: flex-start;
 }
 
-.mdl-layout__content {
-  display: flex;
-  flex-direction: column;
-}
-
-.mdl-card__subtitle-text {
-  color: #ffffff;
-  font-size: 16px;
-  align-self: flex-start;
-}
-
 .product__rest {
   font-family: "Roboto";
   font-size: 24px;
@@ -86,16 +120,6 @@
   padding-left: 0.5em;
 }
 
-.app-layout {
-  /*background: linear-gradient(to bottom, #EEE, white);*/
-  /*background: transparent url("back.jpg") no-repeat scroll center center;*/
-
-}
-
-.app-content {
-  max-width: 1080px;
-  margin: 0 auto;
-}
 
 .app-drawer-header {
   display: flex;
@@ -140,7 +164,6 @@
   margin-right: 8px;
 }
 
-
 .app-transactions > .mdl-card__title > h4 {
   margin: 0;
 }
@@ -182,18 +205,35 @@
   margin: 0 0 8px 0;
 }
 
-.mdl-layout__drawer {
-  border-right: none;
-}
-
 .is-not-authenticated .mdl-layout__drawer-button {
   display: none;
 }
 
-.mdl-card__title > .mdl-textfield {
-  padding: 0;
+.pull-to-refresh {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #fff;
+    z-index: 10;
+    text-align: center;
+    height: 96px;
 }
 
-.mdl-card__title > .mdl-textfield > .mdl-button {
-  bottom: 0;
+.arrow {
+    opacity: .6;
+    font-size: 34px;
+    width: auto;
+    height: auto;
+    transform: rotate(0deg);
+    transition: transform .25s ease;
+    -webkit-transition: transform .25s ease;
+    -webkit-transform: rotate(0deg);
+    margin-top: 5px;
+    display: block;
+}
+
+.ptr-active .pull-to-refresh .arrow {
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
 }

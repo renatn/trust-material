@@ -23,7 +23,10 @@ class AppStore extends Store {
 	getState() {
 		return {
 			token: _token,
-			step: _step
+			step: _step,
+			pull: false,
+			distance: 0,
+			from: 0
 		}
 	}
 
