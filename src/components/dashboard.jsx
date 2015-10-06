@@ -141,7 +141,7 @@ export default class Dashboard extends React.Component {
         return (
             <div className="mdl-grid app-subview-enter" ref="appSubView">
                 <div className="mdl-cell mdl-cell--12-col">
-                    <h3 className="login-heading">Мои финансы</h3>
+                    <h3 className="page-heading">Мои финансы</h3>
                 </div>
                 {cards}
                 {accounts}

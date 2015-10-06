@@ -24,7 +24,6 @@
   bottom: 0;
 }
 
-
 /** APP layot ------------------------------------------------------------ */
 
 .app-layout {
@@ -42,6 +41,40 @@
   box-sizing: border-box;
 }
 
+/** Pull to Refresh------------------------------------------------------------ */
+
+.pull-to-refresh {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #fff;
+    z-index: 10;
+    text-align: center;
+    color: #263238;
+    /*height: 48px;*/
+}
+
+.pull-to-refresh i {
+    font-size: 34px;
+    width: auto;
+    height: auto;
+    transform: rotate(90deg);
+    transition: transform .25s ease;
+    -webkit-transition: transform .25s ease;
+    -webkit-transform: rotate(90deg);
+    display: block;
+}
+
+.ptr-active .pull-to-refresh i {
+  -webkit-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+
+.pull-to-refresh i.spin {
+  animation: spin;
+  display: inline-block;
+}
 
 .login-heading {
   color: #424242;
@@ -119,7 +152,6 @@
 .app-title {
   padding-left: 0.5em;
 }
-
 
 .app-drawer-header {
   display: flex;
@@ -209,31 +241,6 @@
   display: none;
 }
 
-.pull-to-refresh {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    color: #fff;
-    z-index: 10;
-    text-align: center;
-    height: 96px;
-}
-
-.arrow {
-    opacity: .6;
-    font-size: 34px;
-    width: auto;
-    height: auto;
-    transform: rotate(0deg);
-    transition: transform .25s ease;
-    -webkit-transition: transform .25s ease;
-    -webkit-transform: rotate(0deg);
-    margin-top: 5px;
-    display: block;
-}
-
-.ptr-active .pull-to-refresh .arrow {
-    -webkit-transform: rotate(-180deg);
-    transform: rotate(-180deg);
+h3.page-heading {
+  margin: 0;
 }

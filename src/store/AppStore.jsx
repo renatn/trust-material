@@ -23,11 +23,12 @@ class AppStore extends Store {
 	getState() {
 		return {
 			token: _token,
-			step: _step,
-			pull: false,
-			distance: 0,
-			from: 0
+			step: _step
 		}
+	}
+
+	isAuthenticated() {
+		return _step !== 'LOGIN' && _step !== 'AUTH_SMS';
 	}
 
 }
