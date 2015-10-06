@@ -23,9 +23,11 @@ export default class PullToRefresh extends React.Component {
     handleTouchMove(e) {
         const touch = e.touches[0];
         if (this.state.pull) {
+            e.preventDefault();
+            const distance = (touch.pageY - this.state.from) / 2.5;
             this.setState({
-                distance: (touch.pageY - this.state.from) / 2.5,
-                refresh: this.state.distance > 60
+                distance: distance,
+                refresh: distance > 60
             });
         }
     }

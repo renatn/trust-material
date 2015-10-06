@@ -71,10 +71,7 @@
   transform: rotate(270deg);
 }
 
-.pull-to-refresh i.spin {
-  animation: spin;
-  display: inline-block;
-}
+/** --------------------------------------- */
 
 .login-heading {
   color: #424242;

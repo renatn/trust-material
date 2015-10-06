@@ -64,18 +64,20 @@ class App extends React.Component {
         const isAuthenticated = AppStore.isAuthenticated();
 
         return (
-            <div className={isAuthenticated ? 'app-layout mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer' : 'app-layout mdl-layout mdl-js-layout mdl-layout--fixed-header'}>
-                <header className="mdl-layout__header mdl-color--primary">
-                    <div className="mdl-layout__header-row">
-                      <h3 className="app-title">TRUST Material</h3>
-                    </div>
-                </header>
+            <div>
+                <div className={isAuthenticated ? 'app-layout mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer' : 'app-layout mdl-layout mdl-js-layout mdl-layout--fixed-header'}>
+                    <header className="mdl-layout__header mdl-color--primary">
+                        <div className="mdl-layout__header-row">
+                          <h3 className="app-title">TRUST Material</h3>
+                        </div>
+                    </header>
 
-                {isAuthenticated ? <AppSidebar onLogout={this.handleLogout.bind(this)}/> : ''}
+                    {isAuthenticated ? <AppSidebar onLogout={this.handleLogout.bind(this)}/> : ''}
 
-                <PullToRefresh>
-                    {subView}
-                </PullToRefresh>
+                    <PullToRefresh>
+                        {subView}
+                    </PullToRefresh>
+                </div>
             </div>
         );
     }
