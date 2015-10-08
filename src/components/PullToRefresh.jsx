@@ -23,7 +23,6 @@ export default class PullToRefresh extends React.Component {
     handleTouchMove(e) {
         const touch = e.touches[0];
         if (this.state.pull) {
-            e.preventDefault();
             const distance = (touch.pageY - this.state.from) / 2.5;
             this.setState({
                 distance: distance,
@@ -61,7 +60,7 @@ export default class PullToRefresh extends React.Component {
         return (
             <main className={this.state.refresh ? "mdl-layout__content ptr-active" : "mdl-layout__content"}>
                 <div className="pull-to-refresh" style={ptrStyle} ref="ptr">
-                    {this.state.loading ? <i className="material-icons spin">sync</i>: <i className="material-icons">arrow_forward</i>}
+                    <span className={this.state.loading ? 'arrow spin' : 'arrow'}>&#8595;</span>
                 </div>
 
                 <div className="app-content"
