@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM  from 'react-dom';
 import Dashboard from './components/dashboard.jsx';
 import Login from './components/login.jsx';
 import SecondFactor from './components/2fa.jsx';
@@ -88,5 +89,4 @@ class App extends React.Component {
 }
 
 var el = document.getElementById('app');
-React.initializeTouchEvents(true);
-React.render(<App/>, el);
+ReactDOM.render(<App/>, el);
