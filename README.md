@@ -1,4 +1,4 @@
-# trust-material
+# trust-material  [![Build Status](https://travis-ci.org/renatn/trust-material.svg?branch=master)](https://travis-ci.org/renatn/trust-material)
 TRUST Online client in Material Design
 
 ## How to build
