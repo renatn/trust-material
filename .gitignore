@@ -31,3 +31,6 @@ node_modules
 
 # DIST directory
 dist
+
+# Vagrant
+.vagrant

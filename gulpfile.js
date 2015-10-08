@@ -22,7 +22,7 @@ function bundle(watch, debug) {
     var bundler = browserify({entries: './src/app.jsx', extensions: ['.jsx'], debug: debug});
 
     if (watch) {
-        bundler = watchify(bundler);
+        bundler = watchify(bundler, {poll: true});
         bundler.on('update', rebundle);
     }
 

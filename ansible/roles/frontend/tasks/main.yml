@@ -1,0 +1,21 @@
+- name: Install build tools
+  action: apt pkg=build-essential state=installed
+
+- name: Install Git source control
+  action: apt pkg=git state=installed
+
+- name: Install Fontconfig lib as PhantomJS dependency
+  action: apt pkg=fontconfig state=installed
+
+- name: Import the NodeSource GPG key into apt
+  apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key state=present
+
+- name: Add the node.js PPA for precise
+  apt_repository: repo='deb https://deb.nodesource.com/node_0.12 {{ ansible_distribution_release }} main' state=present
+
+- name: Install nodejs and npm
+  action: apt pkg=nodejs state=installed update-cache=yes
+
+- name: Install Grunt node.js package
+  npm: name=gulp global=yes state=present
+
