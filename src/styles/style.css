@@ -1,7 +1,6 @@
 /** MDL customize ------------------------------------------------------------ */
 
 .mdl-layout__content {
-  display: flex;
   flex-direction: column;
   position: relative;
 }

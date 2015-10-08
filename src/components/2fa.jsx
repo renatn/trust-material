@@ -13,7 +13,7 @@ export default class SecondFactor extends React.Component {
 
     componentDidMount() {
         setTimeout(function() {
-            React.findDOMNode(this.refs.appSubView).classList.add("app-subview-enter-active");
+            this.refs.appSubView.classList.add("app-subview-enter-active");
         }.bind(this), 150);
         LoginStore.addChangeListener(this._onChange.bind(this));
     }
@@ -21,12 +21,12 @@ export default class SecondFactor extends React.Component {
     componentWillUnmount() {
         LoginStore.removeChangeListener(this._onChange.bind(this));
     }
-   
+
     handleSubmit(e) {
         e.preventDefault();
 
-        let confirmCodeInput = React.findDOMNode(this.refs.confirmCode);
-        if (!confirmCodeInput.value) {
+        const confirmCode = this.refs.confirmCode.value;
+        if (!confirmCode) {
             this.setState({
                 submitted: true,
                 errorMessage: ''
@@ -34,7 +34,7 @@ export default class SecondFactor extends React.Component {
             return;
         }
 
-        Actions.confirmCode(confirmCodeInput.value, AppStore.getToken());
+        Actions.confirmCode(confirmCode, AppStore.getToken());
     }
 
     render() {

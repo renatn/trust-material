@@ -38,6 +38,7 @@
     "watchify": "^3.4.0"
   },
   "dependencies": {
+    "classnames": "^2.1.5",
     "events": "^1.1.0",
     "flux": "^2.1.1",
     "material-design-icons": "^2.0.0",
