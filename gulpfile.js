@@ -113,4 +113,8 @@ gulp.task('dist', function(cb) {
     runSequence('clean', 'build:dist', 'assets', cb)
 });
 
+gulp.task('test', function() {
+        gutil.log('Not implemented yet...');
+});
+
 gulp.task('default', ['dist']);
